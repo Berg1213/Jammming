@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import { handleCallback } from './utils/auth.js';
 import './App.css'
 import MainPage from './pages/MainPage';
 import LoginPage from './pages/LoginPage';
