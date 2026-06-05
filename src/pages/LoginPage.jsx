@@ -1,4 +1,4 @@
-import " LoginPage.css ";
+import "LoginPage.css";
 import { redirectToSpotifyAuth } from "../utils/auth.js";
 
 function LoginPage() {
@@ -10,3 +10,5 @@ function LoginPage() {
     </>
   )
 }
+
+export default LoginPage;
