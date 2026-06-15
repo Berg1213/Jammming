@@ -12,7 +12,7 @@ const search = async (query) => {
   return data;
   }
 
-const getNewReleases = async () => {
+/* const getNewReleases = async () => {
   const accessToken = localStorage.getItem('access_token');
   const response = await fetch(`https://api.spotify.com/v1/browse/new-releases?limit=50`, {
        headers: {
@@ -21,7 +21,7 @@ const getNewReleases = async () => {
     });
   const data = await response.json();
   return data;
-  }
+  } */
 
 const getUserID = async () => {
   const accessToken = localStorage.getItem('access_token');
@@ -69,4 +69,10 @@ const data = await response.json();
 return data;
 }
 
-export {search, getUserID, createPlaylist, addTracksToPlaylist, getNewReleases}
+const getTopSongs = async () => {
+  const response = await fetch('https://rss.applemarketingtools.com/api/v2/us/music/most-played/50/songs.json');
+  const data = await response.json();
+  return data.feed.results;
+}
+
+export {search, getUserID, createPlaylist, addTracksToPlaylist, getTopSongs};
