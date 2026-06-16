@@ -1,11 +1,13 @@
-import '../css/SearchBar.css';
+//import '../css/SearchBar.css';
 import { useState, useEffect } from "react";
 
 function SearchBar({onSearch}) {
   const [searchTerm, setSearchTerm] = useState("")
   
   useEffect(() => {
-    onSearch(searchTerm)
+    if (searchTerm){
+      onSearch(searchTerm)
+    }
   }, [searchTerm])
   
   return (
