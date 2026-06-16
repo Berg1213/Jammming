@@ -21,6 +21,7 @@ const base64encode = (input) => {
 }
 
 const getToken = async code => {
+  console.log(clientId, redirectUri)
   const codeVerifier = localStorage.getItem('code_verifier');
   const url = "https://accounts.spotify.com/api/token";
   const payload = {

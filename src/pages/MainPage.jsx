@@ -1,9 +1,9 @@
-import '../css/main-page.css';
-import {search, getUserId, createPlaylist, addTracksToPlaylist, getTopSongs} from '../utils/api.js';
+//import '../css/main-page.css';
+import {search, getUserID, createPlaylist, addTracksToPlaylist, getTopSongs} from '../utils/api.js';
 import { useState, useEffect } from "react";
 import SearchBar from "../components/SearchBar.jsx";
 import SearchResults from "../components/SearchResults.jsx";
-import CurrentPlaylist from "../components/CurrentPlaylist.jsx";
+//import CurrentPlaylist from "../components/CurrentPlaylist.jsx";
 
 function MainPage () {
   
@@ -22,14 +22,14 @@ function MainPage () {
   const generateRandomSample = (content, selection) => {
     const shuffled = [...content]
     for (let i = 0; i < selection; i++) {
-      const randomIndex = Math.floor(Math.random() * (shuffled.length - i))
+      const randomIndex = Math.floor(Math.random() * (shuffled.length - i));
       [shuffled[i], shuffled[randomIndex]] = [shuffled[randomIndex], shuffled[i]]
     }
     return shuffled.slice(0, selection)
   }
   
   useEffect(() => {
-    getTopSongs().then(songs => setTopSongs(generateRandomSample(songs, 10)));
+    setTopSongs(generateRandomSample(getTopSongs(), 10));
   }, [])
       
   return (

@@ -11,7 +11,12 @@ function App() {
     const urlParams = new URLSearchParams(window.location.search);
     const code = urlParams.get('code');
     if (code) {
-      handleCallback().then(token => setAccessToken(token));
+      handleCallback().then(token => {
+        console.log("token received:", token);
+        if (token) {
+          setAccessToken(token);
+        }
+      });
     }
   }, []);
   
