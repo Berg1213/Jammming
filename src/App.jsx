@@ -22,7 +22,7 @@ function App() {
   
   return (
     <>
-      {accessToken ? <MainPage/> : <LoginPage/>}
+      {accessToken ? <MainPage accessToken={accessToken} /> : <LoginPage />}    
     </>
   )
 }

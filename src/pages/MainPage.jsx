@@ -3,20 +3,46 @@ import {search, getUserID, createPlaylist, addTracksToPlaylist, getTopSongs} fro
 import { useState, useEffect } from "react";
 import SearchBar from "../components/SearchBar.jsx";
 import SearchResults from "../components/SearchResults.jsx";
-//import CurrentPlaylist from "../components/CurrentPlaylist.jsx";
+import CurrentPlaylist from "../components/CurrentPlaylist.jsx";
 
-function MainPage () {
+function MainPage ({accessToken}) {
   
   const [hasSearched, setHasSearched] = useState(false)
   const [searchResults, setSearchResults] = useState(null)
-  const [playlistTracks, setPlaylistTracks] = useState(null)
-  const [playlistName, setPlaylistName] = useState('My Playlist')
+  const [playlistTracks, setPlaylistTracks] = useState([])
+  const [playlistName, setPlaylistName] = useState('')
   const [topSongs, setTopSongs] = useState(null)
   
+
+
   const handleSearch = (searchTerm) => {
-    search(searchTerm)
-        .then(results => setSearchResults(results))  
+    //console.log("token in handleSearch:", accessToken)
+    search(searchTerm, accessToken)
+      .then(results => {
+        console.log("raw tracks:", results.tracks.items);
+        setSearchResults(results.tracks.items);
+      });
     setHasSearched(true)
+  }
+
+  const handleClickAddTrack = (index) => {
+    console.log("index of track to add:", index);
+    setPlaylistTracks(prevTracks => {
+      const trackToAdd = hasSearched ? searchResults[index] : topSongs[index];
+      return [...prevTracks, trackToAdd];
+    });
+  };
+
+  const handleClickRemoveTrack = (index) => {
+    setPlaylistTracks(prevTracks => {
+      const updatedTracks = [...prevTracks];
+      updatedTracks.splice(index, 1);
+      return updatedTracks;
+    });
+  }
+
+  const handlePlaylistNameChange = (e) => {
+    setPlaylistName(e.target.value);
   }
 
   const generateRandomSample = (content, selection) => {
@@ -35,7 +61,8 @@ function MainPage () {
   return (
     <>
       <SearchBar onSearch={handleSearch} />
-      <SearchResults results={hasSearched ? searchResults : topSongs} />
+      <SearchResults results={hasSearched ? searchResults : topSongs} handleAddTrack={handleClickAddTrack} />
+      <CurrentPlaylist playlistName={playlistName} playlistTracks={playlistTracks} handlePlaylistNameChange={handlePlaylistNameChange} handleRemoveTrack={handleClickRemoveTrack} />
     </>
   );
 };
