@@ -1,12 +1,9 @@
-//import '../css/trackCard.css'
-
-function TrackCard({trackName, artistNames}) {
-
+function TrackCard({ trackName, artistNames, actionButton }) {
   return (
     <>
       <h3>{trackName}</h3>
       <p>{artistNames.join(', ')}</p>
-      <button>+</button>
+      {actionButton}
     </>
   )
 }
