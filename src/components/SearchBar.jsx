@@ -1,4 +1,4 @@
-//import '../css/SearchBar.css';
+import '../css/search-bar.css';
 import { useState, useEffect } from "react";
 
 function SearchBar({onSearch}) {
@@ -11,14 +11,15 @@ function SearchBar({onSearch}) {
   }, [searchTerm])
   
   return (
-    <>
+    <div className="search-bar-container">
+      <span className="coin-slot">5¢</span>
       <input 
         type="text" 
         placeholder="Search for music" 
         value={searchTerm} 
         onChange={(e) => setSearchTerm(e.target.value)}> 
       </input>
-    </>  
+    </div>  
   )
 }
 
