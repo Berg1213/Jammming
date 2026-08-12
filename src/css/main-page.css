@@ -1,0 +1,21 @@
+.main-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  gap: 20px;
+  padding: 0px;
+  width: 100%;
+}
+
+.content-columns-container {
+  display: flex;
+  justify-content: space-evenly;
+  width: 100%;
+  gap: 0px;
+}
+
+input {
+  outline: none;
+  width: 100%;
+}

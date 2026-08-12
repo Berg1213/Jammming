@@ -1,0 +1,44 @@
+.search-bar-container {
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+  border-radius: 5px;
+  background-color: grey;
+  align-items: center;
+  display: flex;
+  height: 40px;
+  gap: 8px;
+}
+
+.search-bar-container input {
+  outline: none;
+  width: 100%;
+  background-color: red;
+  border-radius: 0 50px 50px 0;
+  border: none;
+  color: white
+}
+
+.search-bar-container input::placeholder {
+  color: white;
+  font-family: "Beau Rivage", cursive;
+}
+
+.search-bar-container .coin-slot {
+  color: white;
+  margin-right: 0px;
+  background-color: red;
+  border-radius: 50%;  
+  
+}
+
+.search-bar-container input,
+.search-bar-container .coin-slot {
+  font-size: 30px;
+  height: 100%;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  padding: 0 12px;
+  font-family: "Beau Rivage", cursive;
+}

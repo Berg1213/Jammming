@@ -1,4 +1,4 @@
-//import '../css/main-page.css';
+import '../css/main-page.css';
 import {search, getUserID, createPlaylist, addTracksToPlaylist, getTopSongs} from '../utils/api.js';
 import { useState, useEffect } from "react";
 import SearchBar from "../components/SearchBar.jsx";
@@ -59,11 +59,13 @@ function MainPage ({accessToken}) {
   }, [])
       
   return (
-    <>
+    <div className="main-container">
       <SearchBar onSearch={handleSearch} />
-      <SearchResults results={hasSearched ? searchResults : topSongs} handleAddTrack={handleClickAddTrack} />
-      <CurrentPlaylist playlistName={playlistName} playlistTracks={playlistTracks} handlePlaylistNameChange={handlePlaylistNameChange} handleRemoveTrack={handleClickRemoveTrack} />
-    </>
+      <div className="content-columns-container">
+        <SearchResults results={hasSearched ? searchResults : topSongs} handleAddTrack={handleClickAddTrack} />
+        <CurrentPlaylist playlistName={playlistName} playlistTracks={playlistTracks} handlePlaylistNameChange={handlePlaylistNameChange} handleRemoveTrack={handleClickRemoveTrack} />
+      </div>
+    </div>
   );
 };
 
